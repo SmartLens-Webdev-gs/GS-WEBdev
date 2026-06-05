@@ -235,3 +235,102 @@
 
   carregarPergunta();
 })();
+
+
+(function iniciarFormulario() {
+  const btnSubmit = document.getElementById('formSubmit');
+  if (!btnSubmit) return;
+
+  const campos = {
+    nome: {
+      input: document.getElementById('nomeInput'),
+      erro: document.getElementById('nomeErro'),
+      validar: function (val) {
+        if (!val) return 'O nome é obrigatório.';
+        if (val.length < 3) return 'O nome deve ter ao menos 3 caracteres.';
+        if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(val)) return 'O nome deve conter apenas letras.';
+        return '';
+      }
+    },
+    email: {
+      input: document.getElementById('emailInput'),
+      erro: document.getElementById('emailErro'),
+      validar: function (val) {
+        if (!val) return 'O e-mail é obrigatório.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return 'Informe um e-mail válido.';
+        return '';
+      }
+    },
+    telefone: {
+      input: document.getElementById('telefoneInput'),
+      erro: document.getElementById('telefoneErro'),
+      validar: function (val) {
+        if (!val) return '';
+        var numeros = val.replace(/\D/g, '');
+        if (numeros.length < 10 || numeros.length > 11) return 'Informe um telefone válido com DDD.';
+        return '';
+      }
+    },
+    tipo: {
+      input: document.getElementById('tipoInput'),
+      erro: document.getElementById('tipoErro'),
+      validar: function (val) {
+        if (!val) return 'Selecione um tipo de instalação.';
+        return '';
+      }
+    },
+    mensagem: {
+      input: document.getElementById('mensagemInput'),
+      erro: document.getElementById('mensagemErro'),
+      validar: function (val) {
+        if (!val) return 'A mensagem é obrigatória.';
+        if (val.length < 10) return 'A mensagem deve ter ao menos 10 caracteres.';
+        return '';
+      }
+    }
+  };
+
+  Object.values(campos).forEach(function (campo) {
+    campo.input.addEventListener('blur', function () { validarCampo(campo); });
+    campo.input.addEventListener('input', function () {
+      if (campo.input.classList.contains('campo-erro')) validarCampo(campo);
+    });
+  });
+
+  function validarCampo(campo) {
+    var msgErro = campo.validar(campo.input.value.trim());
+    campo.erro.textContent = msgErro;
+    if (msgErro) { campo.input.classList.add('campo-erro'); return false; }
+    else { campo.input.classList.remove('campo-erro'); return true; }
+  }
+
+  function validarTodos() {
+    var valido = true;
+    Object.values(campos).forEach(function (campo) {
+      if (!validarCampo(campo)) valido = false;
+    });
+    return valido;
+  }
+
+  btnSubmit.addEventListener('click', function () {
+    if (validarTodos()) {
+      document.getElementById('formWrapper').style.display = 'none';
+      var formSuccess = document.getElementById('formSuccess');
+      formSuccess.style.display = 'block';
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      setTimeout(function () {
+        Object.values(campos).forEach(function (campo) {
+          campo.input.value = '';
+          campo.input.classList.remove('campo-erro');
+          campo.erro.textContent = '';
+        });
+        document.getElementById('formWrapper').style.display = 'block';
+        formSuccess.style.display = 'none';
+      }, 5000);
+    } else {
+      var primeiro = document.querySelector('.campo-erro');
+      if (primeiro) { primeiro.scrollIntoView({ behavior: 'smooth', block: 'center' }); primeiro.focus(); }
+    }
+  });
+})();
