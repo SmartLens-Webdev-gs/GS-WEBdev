@@ -92,3 +92,35 @@
   iniciarAutoPlay();
 })();
 
+(function iniciarQuiz() {
+  const perguntas = [
+    {
+      pergunta: 'O que é energia solar fotovoltaica?',
+      opcoes: ['Energia gerada pelo vento', 'Energia gerada pela conversão da luz solar em eletricidade', 'Energia gerada pela queima de biomassa', 'Energia gerada por turbinas a vapor'],
+      correta: 1
+    },
+    {
+      pergunta: 'Qual Objetivo de Desenvolvimento Sustentável (ODS) está diretamente relacionado à energia limpa e acessível?',
+      opcoes: ['ODS 3', 'ODS 7', 'ODS 11', 'ODS 15'],
+      correta: 1
+    },
+    {
+      pergunta: 'Qual é a principal vantagem do monitoramento em tempo real de painéis solares?',
+      opcoes: ['Aumentar o tamanho dos painéis', 'Identificar falhas e ineficiências rapidamente', 'Eliminar a necessidade de manutenção', 'Reduzir o número de painéis necessários'],
+      correta: 1
+    },
+    {
+      pergunta: 'O SolarNet aplica conceitos de qual área tecnológica para o monitoramento energético?',
+      opcoes: ['Tecnologia automotiva', 'Tecnologia espacial', 'Tecnologia naval', 'Tecnologia agrícola'],
+      correta: 1
+    },
+    {
+      pergunta: 'Qual é um dos principais problemas abordados pelo SolarNet?',
+      opcoes: ['Falta de energia eólica no Brasil', 'Excesso de energia gerada por usinas nucleares', 'Falta de monitoramento acessível da eficiência da energia solar', 'Alto custo de fabricação de painéis'],
+      correta: 2
+    },
+    {
+      pergunta: 'Painéis solares convertem qual tipo de energia em energia elétrica?',
+      opcoes: ['Energia cinética', 'Energia térmica', 'Energia luminosa (solar)', 'Energia química'],
+      correta: 2
+    },
