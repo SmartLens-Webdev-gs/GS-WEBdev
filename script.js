@@ -334,3 +334,23 @@
     }
   });
 })();
+
+(function iniciarMenuMobile() {
+  var btnToggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMenu');
+  if (!btnToggle || !menu) return;
+
+  btnToggle.addEventListener('click', function () {
+    var aberto = menu.classList.toggle('aberto');
+    btnToggle.setAttribute('aria-expanded', aberto);
+    btnToggle.textContent = aberto ? '✕' : '☰';
+  });
+
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      menu.classList.remove('aberto');
+      btnToggle.setAttribute('aria-expanded', false);
+      btnToggle.textContent = '☰';
+    });
+  });
+})();
