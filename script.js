@@ -124,3 +124,114 @@
       opcoes: ['Energia cinética', 'Energia térmica', 'Energia luminosa (solar)', 'Energia química'],
       correta: 2
     },
+  ]
+    const elPergunta = document.getElementById('quizPergunta');
+  const elOpcoes = document.getElementById('quizOpcoes');
+  const elCounter = document.getElementById('quizCounter');
+  const elProgressBar = document.getElementById('quizProgressBar');
+  const elNextBtn = document.getElementById('quizNextBtn');
+  const elResultado = document.getElementById('quizResultado');
+  const elCard = document.getElementById('quizCard');
+  const elReiniciar = document.getElementById('quizReiniciar');
+  const elResultadoIcon = document.getElementById('resultadoIcon');
+  const elResultadoTitulo = document.getElementById('resultadoTitulo');
+  const elResultadoPontos = document.getElementById('resultadoPontos');
+  const elResultadoMsg = document.getElementById('resultadoMsg');
+
+  if (!elPergunta) return;
+
+  let indicePergunta = 0;
+  let pontuacao = 0;
+  let respondeu = false;
+
+  function carregarPergunta() {
+    respondeu = false;
+    elNextBtn.style.display = 'none';
+
+    const p = perguntas[indicePergunta];
+    elCounter.textContent = 'Pergunta ' + (indicePergunta + 1) + ' de ' + perguntas.length;
+    elProgressBar.style.width = (((indicePergunta + 1) / perguntas.length) * 100) + '%';
+    elPergunta.textContent = p.pergunta;
+    elOpcoes.innerHTML = '';
+
+    p.opcoes.forEach(function (opcao, i) {
+      var btn = document.createElement('button');
+      btn.className = 'quiz-opcao';
+      btn.textContent = opcao;
+      btn.setAttribute('data-indice', i);
+      btn.addEventListener('click', function () {
+        if (respondeu) return;
+        responder(i, btn);
+      });
+      elOpcoes.appendChild(btn);
+    });
+  }
+
+  function responder(indiceEscolhido, btnClicado) {
+    respondeu = true;
+    const p = perguntas[indicePergunta];
+    const btns = elOpcoes.querySelectorAll('.quiz-opcao');
+
+    btns.forEach(function (b) { b.disabled = true; });
+
+    if (indiceEscolhido === p.correta) {
+      btnClicado.classList.add('correta');
+      pontuacao++;
+    } else {
+      btnClicado.classList.add('errada');
+      btns[p.correta].classList.add('correta');
+    }
+
+    elNextBtn.style.display = 'block';
+    elNextBtn.textContent = indicePergunta === perguntas.length - 1 ? 'Ver Resultado 🏆' : 'Próxima →';
+  }
+
+  elNextBtn.addEventListener('click', function () {
+    indicePergunta++;
+    if (indicePergunta < perguntas.length) {
+      carregarPergunta();
+    } else {
+      mostrarResultado();
+    }
+  });
+
+  function mostrarResultado() {
+    elCard.style.display = 'none';
+    elResultado.style.display = 'block';
+
+    var pct = Math.round((pontuacao / perguntas.length) * 100);
+    elResultadoPontos.textContent = pontuacao + ' / ' + perguntas.length + ' (' + pct + '%)';
+    elProgressBar.style.width = '100%';
+    elCounter.textContent = 'Quiz concluído!';
+
+    if (pct === 100) {
+      elResultadoIcon.textContent = '🏆';
+      elResultadoTitulo.textContent = 'Perfeito!';
+      elResultadoMsg.textContent = 'Uau! Você acertou todas as perguntas! Você é um verdadeiro especialista em energia solar e no projeto SolarNet.';
+    } else if (pct >= 70) {
+      elResultadoIcon.textContent = '⭐';
+      elResultadoTitulo.textContent = 'Muito Bem!';
+      elResultadoMsg.textContent = 'Ótimo desempenho! Você demonstra bom conhecimento sobre energia solar sustentável e as tecnologias do SolarNet.';
+    } else if (pct >= 50) {
+      elResultadoIcon.textContent = '📚';
+      elResultadoTitulo.textContent = 'Bom Esforço!';
+      elResultadoMsg.textContent = 'Você tem uma base de conhecimento sobre o tema. Continue aprendendo mais sobre energia solar e sustentabilidade!';
+    } else {
+      elResultadoIcon.textContent = '🌱';
+      elResultadoTitulo.textContent = 'Continue Aprendendo!';
+      elResultadoMsg.textContent = 'Não desanime! Explore mais o site do SolarNet e aprenda sobre energia solar limpa e tecnologia espacial aplicada à sustentabilidade.';
+    }
+  }
+
+  elReiniciar.addEventListener('click', function () {
+    indicePergunta = 0;
+    pontuacao = 0;
+    respondeu = false;
+    elResultado.style.display = 'none';
+    elCard.style.display = 'block';
+    elProgressBar.style.width = '10%';
+    carregarPergunta();
+  });
+
+  carregarPergunta();
+})();
