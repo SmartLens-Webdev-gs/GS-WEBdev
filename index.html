@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    
+
     <div class="theme-switcher" id="themeSwitcher">
     <span class="theme-label">Tema:</span>
     <button class="theme-btn theme-escuro active" data-theme="escuro" title="Tema Escuro" aria-label="Tema Escuro">☀</button>
@@ -20,13 +20,14 @@
 
   <nav>
     <a href="#hero" class="nav-logo"><span class="solar">SOLAR</span><span class="net">NET</span></a>
-    <ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul id="navMenu">
       <li><a href="#problema">Problema</a></li>
+      <li><a href="#slideshow">Galeria</a></li>
       <li><a href="#tecnologia">Tecnologia</a></li>
       <li><a href="#objetivos">Objetivos</a></li>
-      <li><a href="#publico">Público</a></li>
-      <li><a href="#beneficios">Benefícios</a></li>
-      <li><a href="#aplicacao">Aplicação</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
 
@@ -37,18 +38,17 @@
   </div>
 
  
-  <section id="hero" class="hero">
-    <img
-      src="./imgs/icone.png"
-      alt="Ilustração de painel solar com monitoramento inteligente"
-      width="500"
-      style="margin-bottom: 24px;"
-    />
+ <section id="hero" class="hero">
+    <div class="hero-badge">🛰️ Tecnologia Espacial Aplicada</div>
     <h1 class="hero-titulo"><span class="solar">SOLAR</span><span class="net">NET</span></h1>
     <p class="hero-subtitulo">
-      Tecnologia espacial adaptada para a Terra. Monitoramento inteligente de energia solar.
+      Monitoramento inteligente de energia solar.<br>
+      Tecnologia espacial adaptada para a Terra.
     </p>
-    <a href="#problema" class="hero-botao">Conheça o projeto</a>
+    <div class="hero-ctas">
+      <a href="#slideshow" class="hero-botao">Ver Galeria</a>
+      <a href="#quiz" class="hero-botao hero-botao-outline">Fazer o Quiz</a>
+    </div>
   </section>
 
   
@@ -59,6 +59,52 @@
     <div class="editar">
       <strong> Falta de monitoramento acessível da eficiência da energia solar, causando desperdícios e dificultando a identificação de falhas e perdas energéticas.<br></strong>
        <strong>Falhas não detectadas diminuem a geração de energia limpa e aumentam custos para usuários e empresas.</strong>
+    </div>
+  </section>
+
+
+  <section id="slideshow" class="secao secao-alt">
+    <p class="secao-numero">02 — Galeria</p>
+    <h2 class="secao-titulo">Nossa <span>Galeria</span></h2>
+    <div class="divisor"></div>
+
+    <div class="slideshow-container" id="slideshow">
+      <div class="slide active">
+        <div class="slide-img" style="background: linear-gradient(135deg, #FFB800 0%, #FF7A00 50%, #0A0C10 100%);">
+          <div class="slide-icon">☀️</div>
+        </div>
+        <div class="slide-caption">
+          <h3>Painéis Solares Residenciais</h3>
+          <p>Sistemas de energia solar instalados em residências para reduzir custos e promover sustentabilidade.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-img" style="background: linear-gradient(135deg, #1a3a5c 0%, #0d6efd 50%, #0A0C10 100%);">
+          <div class="slide-icon">🛰️</div>
+        </div>
+        <div class="slide-caption">
+          <h3>Monitoramento Inteligente</h3>
+          <p>Tecnologia espacial adaptada para monitorar e otimizar a geração de energia solar em tempo real.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-img" style="background: linear-gradient(135deg, #1a5c1a 0%, #22c55e 50%, #0A0C10 100%);">
+          <div class="slide-icon">🌍</div>
+        </div>
+        <div class="slide-caption">
+          <h3>Energia Limpa para o Planeta</h3>
+          <p>Contribuindo para um futuro mais sustentável através do uso inteligente da energia solar.</p>
+        </div>
+      </div>
+
+      <button class="slide-btn slide-prev" id="slidePrev" aria-label="Anterior">&#8249;</button>
+      <button class="slide-btn slide-next" id="slideNext" aria-label="Próximo">&#8250;</button>
+
+      <div class="slide-dots" id="slideDots">
+        <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="dot" data-index="2" aria-label="Slide 3"></button>
+      </div>
     </div>
   </section>
 
@@ -179,6 +225,34 @@
     </div>
   </section>
 
+  <section id="quiz" class="secao">
+    <p class="secao-numero">07 — Quiz</p>
+    <h2 class="secao-titulo">Quiz <span>SolarNet</span></h2>
+    <div class="divisor"></div>
+    <p class="secao-desc">Teste seus conhecimentos sobre energia solar e o projeto SolarNet!</p>
+
+    <div class="quiz-container" id="quizContainer">
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+      </div>
+      <p class="quiz-counter" id="quizCounter">Pergunta 1 de 10</p>
+
+      <div class="quiz-card" id="quizCard">
+        <p class="quiz-pergunta" id="quizPergunta"></p>
+        <div class="quiz-opcoes" id="quizOpcoes"></div>
+        <button class="quiz-btn-next" id="quizNextBtn" style="display:none;">Próxima →</button>
+      </div>
+
+      <div class="quiz-resultado" id="quizResultado" style="display:none;">
+        <div class="resultado-icon" id="resultadoIcon"></div>
+        <h3 class="resultado-titulo" id="resultadoTitulo"></h3>
+        <p class="resultado-pontos" id="resultadoPontos"></p>
+        <p class="resultado-msg" id="resultadoMsg"></p>
+        <button class="quiz-btn-reiniciar" id="quizReiniciar">🔄 Jogar Novamente</button>
+      </div>
+    </div>
+  </section>
+
  
   <section id="aplicacao" class="secao secao-alt">
     <p class="secao-numero">06 — Aplicação no Dia a Dia</p>
@@ -200,6 +274,62 @@
       <div class="passo">
         <span class="seta">→</span>
         <p>Uso em ambientes residenciais e redução de custos energéticos.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contato" class="secao">
+    <p class="secao-numero">09 — Contato</p>
+    <h2 class="secao-titulo">Entre em <span>Contato</span></h2>
+    <div class="divisor"></div>
+    <p class="secao-desc">Tem interesse no SolarNet? Preencha o formulário e entraremos em contato.</p>
+
+    <div class="form-container">
+      <div class="form-success" id="formSuccess" style="display:none;">
+        <span class="success-icon">✅</span>
+        <p>Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+      </div>
+
+      <div id="formWrapper">
+        <div class="form-grupo">
+          <label for="nomeInput">Nome completo *</label>
+          <input type="text" id="nomeInput" placeholder="Seu nome completo" autocomplete="name" />
+          <span class="form-erro" id="nomeErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="emailInput">E-mail *</label>
+          <input type="email" id="emailInput" placeholder="seu@email.com" autocomplete="email" />
+          <span class="form-erro" id="emailErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="telefoneInput">Telefone</label>
+          <input type="tel" id="telefoneInput" placeholder="(11) 99999-9999" autocomplete="tel" />
+          <span class="form-erro" id="telefoneErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="tipoInput">Tipo de instalação *</label>
+          <select id="tipoInput">
+            <option value="">Selecione uma opção...</option>
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+            <option value="industrial">Industrial</option>
+            <option value="rural">Rural</option>
+            <option value="educacional">Educacional</option>
+          </select>
+          <span class="form-erro" id="tipoErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="mensagemInput">Mensagem *</label>
+          <textarea id="mensagemInput" rows="4" placeholder="Descreva sua necessidade ou dúvida..."></textarea>
+          <span class="form-erro" id="mensagemErro"></span>
+        </div>
+
+        <button class="form-submit" id="formSubmit">Enviar Mensagem ➤</button>
       </div>
     </div>
   </section>
