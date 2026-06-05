@@ -278,6 +278,62 @@
     </div>
   </section>
 
+
+  <section id="contato" class="secao">
+    <p class="secao-numero">09 — Contato</p>
+    <h2 class="secao-titulo">Entre em <span>Contato</span></h2>
+    <div class="divisor"></div>
+    <p class="secao-desc">Tem interesse no SolarNet? Preencha o formulário e entraremos em contato.</p>
+
+    <div class="form-container">
+      <div class="form-success" id="formSuccess" style="display:none;">
+        <span class="success-icon">✅</span>
+        <p>Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+      </div>
+
+      <div id="formWrapper">
+        <div class="form-grupo">
+          <label for="nomeInput">Nome completo *</label>
+          <input type="text" id="nomeInput" placeholder="Seu nome completo" autocomplete="name" />
+          <span class="form-erro" id="nomeErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="emailInput">E-mail *</label>
+          <input type="email" id="emailInput" placeholder="seu@email.com" autocomplete="email" />
+          <span class="form-erro" id="emailErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="telefoneInput">Telefone</label>
+          <input type="tel" id="telefoneInput" placeholder="(11) 99999-9999" autocomplete="tel" />
+          <span class="form-erro" id="telefoneErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="tipoInput">Tipo de instalação *</label>
+          <select id="tipoInput">
+            <option value="">Selecione uma opção...</option>
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+            <option value="industrial">Industrial</option>
+            <option value="rural">Rural</option>
+            <option value="educacional">Educacional</option>
+          </select>
+          <span class="form-erro" id="tipoErro"></span>
+        </div>
+
+        <div class="form-grupo">
+          <label for="mensagemInput">Mensagem *</label>
+          <textarea id="mensagemInput" rows="4" placeholder="Descreva sua necessidade ou dúvida..."></textarea>
+          <span class="form-erro" id="mensagemErro"></span>
+        </div>
+
+        <button class="form-submit" id="formSubmit">Enviar Mensagem ➤</button>
+      </div>
+    </div>
+  </section>
+
   
   <footer>
     <div class="footer-logo"><span class="solar">SOLAR</span><span class="net">NET</span></div>
