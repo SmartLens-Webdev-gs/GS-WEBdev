@@ -129,6 +129,11 @@
       opcoes: ['Residências', 'Agroindústria', 'Mineradoras de carvão', 'Instituições de Ensino'],
       correta: 2
     },
+    {
+      pergunta: 'Qual benefício ambiental é promovido pelo uso da energia solar?',
+      opcoes: ['Aumento da emissão de gases poluentes','Maior consumo de combustíveis fósseis','Redução da dependência de fontes de energia não renováveis','Produção de resíduos tóxicos em larga escala'],
+      correta: 2
+    }
   ]
     const elPergunta = document.getElementById('quizPergunta');
   const elOpcoes = document.getElementById('quizOpcoes');
