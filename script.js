@@ -134,6 +134,11 @@
       opcoes: ['Aumento da emissão de gases poluentes','Maior consumo de combustíveis fósseis','Redução da dependência de fontes de energia não renováveis','Produção de resíduos tóxicos em larga escala'],
       correta: 2
     }
+    {
+      pergunta: 'O Brasil é um dos países com maior potencial de energia solar do mundo. Qual fator contribui para isso?',
+      opcoes: ['Baixa altitude do território', 'Alta incidência de luz solar ao longo do ano', 'Abundância de rios', 'Temperatura média baixa'],
+      correta: 1
+    },
   ]
     const elPergunta = document.getElementById('quizPergunta');
   const elOpcoes = document.getElementById('quizOpcoes');
