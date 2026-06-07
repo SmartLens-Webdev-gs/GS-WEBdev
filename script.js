@@ -124,6 +124,11 @@
       opcoes: ['Energia cinética', 'Energia térmica', 'Energia luminosa (solar)', 'Energia química'],
       correta: 2
     },
+    {
+      pergunta: 'Qual dos seguintes NÃO é um público-alvo do SolarNet?',
+      opcoes: ['Residências', 'Agroindústria', 'Mineradoras de carvão', 'Instituições de Ensino'],
+      correta: 2
+    },
   ]
     const elPergunta = document.getElementById('quizPergunta');
   const elOpcoes = document.getElementById('quizOpcoes');
